@@ -1,4 +1,4 @@
-# Zip Merge Utility
+# ZipMergeUtility
 
 This Python script provides a utility for merging the contents of multiple zip files intelligently. It extracts the contents of each zip file into a temporary directory and then moves or merges the extracted files and directories into a main working directory, handling conflicts and duplicates intelligently.
 
@@ -15,31 +15,61 @@ This Python script provides a utility for merging the contents of multiple zip f
 ## Requirements
 - Python 3.x
 - `shutil` and `zipfile` standard libraries
-  
-## Example
-Suppose you have three zip files:
-- `file1.zip` containing:
-  - `folder1/`
-    - `file1_1.txt`
-- `file2.zip` containing:
-  - `folder1/`
-    - `file1_2.txt`
-  - `file2.txt`
-- `file3.zip` containing:
-  - `folder2/`
-    - `file3_1.txt`
 
-After running the script, the main working directory will contain:
-- `folder1/`
-  - `file1_1.txt`
-  - `file1_2.txt`
-- `folder2/`
-  - `file3_1.txt`
-- `file2.txt`
+## Example
+Suppose you have a large file named `project_files.zip` stored on Google Drive, and it contains the following directory structure:
+
+```
+project_files.zip
+├── documents/
+│   ├── report.docx
+│   ├── presentation.pptx
+│   └── notes.txt
+├── code/
+│   ├── main.py
+│   ├── utils.py
+│   └── tests/
+│       ├── test_main.py
+│       └── test_utils.py
+└── resources/
+    ├── images/
+    │   ├── logo.png
+    │   └── background.jpg
+    └── data/
+        ├── dataset.csv
+        └── config.json
+```
+
+When you download this file from Google Drive, it might be compressed into multiple zip files due to its size. Let's say it's split into three zip files:
+
+`project_files_part1.zip`, `project_files_part2.zip`, and `project_files_part3.zip` which each file will contain the same directories but the other half of files.
+
+After running the script to merge these zip files, the main working directory will contain:
+
+```
+main_directory/
+├── documents/
+│   ├── report.docx
+│   ├── presentation.pptx
+│   └── notes.txt
+├── code/
+│   ├── main.py
+│   ├── utils.py
+│   └── tests/
+│       ├── test_main.py
+│       └── test_utils.py
+└── resources/
+    ├── images/
+    │   ├── logo.png
+    │   └── background.jpg
+    └── data/
+        ├── dataset.csv
+        └── config.json
+```
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 This script was developed with inspiration from various file management utilities.
-
